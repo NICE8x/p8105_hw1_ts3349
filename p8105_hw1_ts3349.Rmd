@@ -69,3 +69,12 @@ mean(penguins$flipper_length_mm, na.rm = TRUE)
 ```
 
 
+Make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x); color points using the species variable (adding color = ... inside of aes in your ggplot code should help).
+
+Export your first scatterplot to your project directory using ggsave
+```{r problem 2 part 2}
+
+```
+
+
+
