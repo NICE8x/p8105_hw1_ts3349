@@ -56,6 +56,7 @@ as.numeric(as.factor(prob_1_df$col_2)) * prob_1_df$col_1
 
 # Problem 2
 
+## Part 1
 
 Import penguins data:
 ```{r problem 2 part 1}
@@ -71,13 +72,14 @@ The data frame has `r nrow(penguins)` rows and `r ncol(penguins)` columns.
 
 The mean of the flipper length of the penguins after removing all NA values is `r mean(penguins$flipper_length_mm, na.rm = TRUE)`.
 
+## Part 2
 
-
-Make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x); color points using the species variable (adding color = ... inside of aes in your ggplot code should help).
-
-Export your first scatterplot to your project directory using ggsave
+Scatterplot of flipper_length_mm vs bill_length_mm:
 ```{r problem 2 part 2}
+penguins_scatterplot <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+penguins_scatterplot
 
+ggsave("penguins_scatterplot.pdf", height = 4, width = 6)
 ```
 
 
