@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Problem 1
 
+
 ```{r problem 1 library}
 library(tidyverse)
 ```
@@ -55,37 +56,14 @@ as.numeric(as.factor(prob_1_df$col_2)) * prob_1_df$col_1
 
 # Problem 2
 
-the data in this dataset, including names / values of important variables
-the size of the dataset (using nrow and ncol)
-the mean flipper length
 
-Descriptive analysis of penguins data:
+Import penguins data:
 ```{r problem 2 part 1}
 data("penguins", package = "palmerpenguins")
-
-head(penguins)
-levels(penguins$species)
-levels(penguins$island)
-min(penguins$bill_length_mm, na.rm = TRUE)
-max(penguins$bill_length_mm, na.rm = TRUE)
-min(penguins$bill_depth_mm, na.rm = TRUE)
-max(penguins$bill_depth_mm, na.rm = TRUE)
-min(penguins$flipper_length_mm, na.rm = TRUE)
-max(penguins$flipper_length_mm, na.rm = TRUE)
-min(penguins$body_mass_g, na.rm = TRUE)
-max(penguins$body_mass_g, na.rm = TRUE)
-levels(penguins$sex)
-min(penguins$year, na.rm = TRUE)
-max(penguins$year, na.rm = TRUE)
-
-nrow(penguins)
-ncol(penguins)
-
-mean(penguins$flipper_length_mm, na.rm = TRUE)
 ```
-The penguins data contains 8 different variables including species(factor), island(factor), bill_length_mm(numeric), bill_depth_mm(numeric), flipper_length_mm(numeric), body_mass_g(numeric), sex(factor), and year(numeric).
+The penguins data contains `r ncol(penguins)` different variables including `r colnames(penguins[1])`(`rclass(penguins[[1]])`), `r colnames(penguins[2])`(`rclass(penguins[[2]])`), `r colnames(penguins[3])`(`rclass(penguins[[3]])`), `r colnames(penguins[4])`(`rclass(penguins[[4]])`), `r colnames(penguins[5])`(`rclass(penguins[[5]])`),  `r colnames(penguins[6])`(`rclass(penguins[[6]])`),  `r colnames(penguins[7])`(`rclass(penguins[[7]])`),  `r colnames(penguins[8])`(`rclass(penguins[[8]])`).  
 
-There are 3 different species, `r levels(penguins$species)` of penguins.  There are 3 different island locations of the penguins, `r levels(penguins$island)`.  There are 2 different sexes of the penguins, `r levels(penguins$sex)`.
+There are 3 different species including, `r levels(penguins$species)` of penguins.  There are 3 different island locations of the penguins, `r levels(penguins$island)`.  There are 2 different sexes of the penguins, `r levels(penguins$sex)`.
 
 The bill lengths of the penguins range from `r min(penguins$bill_length_mm, na.rm = TRUE)`mm to `r max(penguins$bill_length_mm, na.rm = TRUE)`mm.  The bill depths of the penguins range from `r min(penguins$bill_depth_mm, na.rm = TRUE)`mm to `r max(penguins$bill_depth_mm, na.rm = TRUE)`mm.  The flipper lengths of the penguins range from `r min(penguins$flipper_length_mm, na.rm = TRUE)`mm to `r max(penguins$flipper_length_mm, na.rm = TRUE)`mm.  The body mass of the penguins range from `r min(penguins$body_mass_g, na.rm = TRUE)`g to `r max(penguins$body_mass_g, na.rm = TRUE)`g.  The years range from `r min(penguins$year, na.rm = TRUE)` to `r max(penguins$year, na.rm = TRUE)`.
 
