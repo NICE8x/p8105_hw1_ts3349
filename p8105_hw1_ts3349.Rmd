@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Problem 1
 
 
-```{r problem 1 library, results="hide"}
+```{r problem 1 library}
 library(tidyverse)
 ```
 
