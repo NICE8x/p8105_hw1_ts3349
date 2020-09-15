@@ -11,10 +11,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Problem 1
 
+```{r problem 1 library}
+library(tidyverse)
+```
+
 Create a dataframe as specified with four columns.
 ```{r problem 1 part 1}
-library(tidyverse)
-
 prob_1_df <- tibble(
   col_1 = rnorm(10),
   col_2 = col_1 > 0,
@@ -54,7 +56,16 @@ as.numeric(as.factor(prob_1_df$col_2)) * prob_1_df$col_1
 
 # Problem 2
 
+the data in this dataset, including names / values of important variables
+the size of the dataset (using nrow and ncol)
+the mean flipper length
 ```{r problem 2 part 1}
+data("penguins", package = "palmerpenguins")
+head(penguins)
+
+nrow(penguins)
+ncol(penguins)
+mean(penguins$flipper_length_mm, na.rm = TRUE)
 ```
 
 
