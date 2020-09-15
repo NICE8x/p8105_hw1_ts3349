@@ -61,13 +61,13 @@ Import penguins data:
 ```{r problem 2 part 1}
 data("penguins", package = "palmerpenguins")
 ```
-The penguins data contains `r ncol(penguins)` different variables including `r colnames(penguins[1])`(`rclass(penguins[[1]])`), `r colnames(penguins[2])`(`rclass(penguins[[2]])`), `r colnames(penguins[3])`(`rclass(penguins[[3]])`), `r colnames(penguins[4])`(`rclass(penguins[[4]])`), `r colnames(penguins[5])`(`rclass(penguins[[5]])`),  `r colnames(penguins[6])`(`rclass(penguins[[6]])`),  `r colnames(penguins[7])`(`rclass(penguins[[7]])`),  `r colnames(penguins[8])`(`rclass(penguins[[8]])`).  
+The penguins data contains `r ncol(penguins)` different variables including `r colnames(penguins[1])`(`r class(penguins[[1]])`), `r colnames(penguins[2])`(`r class(penguins[[2]])`), `r colnames(penguins[3])`(`r class(penguins[[3]])`), `r colnames(penguins[4])`(`r class(penguins[[4]])`), `r colnames(penguins[5])`(`r class(penguins[[5]])`),  `r colnames(penguins[6])`(`r class(penguins[[6]])`),  `r colnames(penguins[7])`(`r class(penguins[[7]])`),  `r colnames(penguins[8])`(`r class(penguins[[8]])`).  
 
-There are 3 different species including, `r levels(penguins$species)` of penguins.  There are 3 different island locations of the penguins, `r levels(penguins$island)`.  There are 2 different sexes of the penguins, `r levels(penguins$sex)`.
+There are 3 different species of penguins including, `r levels(penguins$species)`.  There are 3 different island locations of the penguins; `r levels(penguins$island)`.  There are 2 different sexes of the penguins; `r levels(penguins$sex)`.
 
 The bill lengths of the penguins range from `r min(penguins$bill_length_mm, na.rm = TRUE)`mm to `r max(penguins$bill_length_mm, na.rm = TRUE)`mm.  The bill depths of the penguins range from `r min(penguins$bill_depth_mm, na.rm = TRUE)`mm to `r max(penguins$bill_depth_mm, na.rm = TRUE)`mm.  The flipper lengths of the penguins range from `r min(penguins$flipper_length_mm, na.rm = TRUE)`mm to `r max(penguins$flipper_length_mm, na.rm = TRUE)`mm.  The body mass of the penguins range from `r min(penguins$body_mass_g, na.rm = TRUE)`g to `r max(penguins$body_mass_g, na.rm = TRUE)`g.  The years range from `r min(penguins$year, na.rm = TRUE)` to `r max(penguins$year, na.rm = TRUE)`.
 
-The data frame has `r nrow(penguins)` and `r ncol(penguins)` columns.
+The data frame has `r nrow(penguins)` rows and `r ncol(penguins)` columns.
 
 The mean of the flipper length of the penguins after removing all NA values is `r mean(penguins$flipper_length_mm, na.rm = TRUE)`.
 
