@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Problem 1
 
+Create a dataframe as specified with four columns.
 ```{r problem 1 part 1}
 library(tidyverse)
 
@@ -23,7 +24,14 @@ prob_1_df <- tibble(
 )
 
 prob_1_df
+
+mean(prob_1_df$col_1)
+mean(prob_1_df$col_2)
+mean(prob_1_df$col_3)
+mean(prob_1_df$col_4)
 ```
+R can take the mean of the numeric column (col_1) and the logical column (col_2).  R cannot take the mean of the character column (col_3) and the mean of the factor column (col_4).
+
 
 # Problem 2
 
