@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
-Create a dataframe as specified with four columns:
+## Create a dataframe as specified with four columns:
 ```{r problem 1 part 1}
 prob_1_df <- tibble(
   col_1 = rnorm(10),
@@ -35,7 +35,7 @@ mean(prob_1_df$col_4)
 ```
 R can take the mean of the numeric variable (col_1) and the logical variable (col_2).  R cannot take the mean of the character variable (col_3) and the mean of the factor variable (col_4).
 
-Convert variables to numeric:
+## Convert variables to numeric:
 ```{r problem 1 part 2, eval=FALSE}
 as.numeric(prob_1_df$col_2)
 as.numeric(prob_1_df$col_3)
@@ -45,7 +45,7 @@ The logical variable is converted into 0s and 1s (0 for FALSE and 1 for TRUE).  
 
 It makes sense that the mean of the logical variable is the mean of the variable after being converted into a numeric variable (mean of 0s and 1s).  It makes sense you cannot find the mean of the character variable since all the character values are converted into NA values when converting from character to numeric.  A factor variable is not converted into a numeric variable when attempting to find the mean.  The mean of a factor variable can only be found if the variable is converted into a numeric variable first.  R can only find the mean of a numeric or logical variable and not character or factor variables.
 
-Convert logical variable in various ways and multiply by the numeric variable:
+## Convert logical variable in various ways and multiply by the numeric variable:
 ```{r problem 1 part 3}
 as.numeric(prob_1_df$col_2) * prob_1_df$col_1
 
