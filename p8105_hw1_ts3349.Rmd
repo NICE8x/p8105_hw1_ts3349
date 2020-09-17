@@ -23,15 +23,14 @@ prob_1_df <- tibble(
   col_2 = col_1 > 0,
   col_3 = c("Var 1", "Var 2", "Var 3", "Var 4", "Var 5", "Var 6", "Var 7", "Var 8", "Var 9", "Var 10"),
   col_4 = factor(c("level 1", "level 2", "level 3", "level 2", "level 1", "level 3", "level 1", "level 2", "level 2", "level 3"))
-
 )
 
 prob_1_df
 
-mean(prob_1_df$col_1)
-mean(prob_1_df$col_2)
-mean(prob_1_df$col_3)
-mean(prob_1_df$col_4)
+mean(pull(prob_1_df, col_1))
+mean(pull(prob_1_df, col_2))
+mean(pull(prob_1_df, col_3))
+mean(pull(prob_1_df, col_4))
 ```
 R can take the mean of the numeric variable (col_1) and the logical variable (col_2).  R cannot take the mean of the character variable (col_3) and the mean of the factor variable (col_4).
 
@@ -47,14 +46,15 @@ It makes sense that the mean of the logical variable is the mean of the variable
 
 ## Convert logical variable in various ways and multiply by the numeric variable:
 ```{r problem 1 part 3}
-as.numeric(prob_1_df$col_2) * prob_1_df$col_1
+as.numeric(pull(prob_1_df,col_2)) * pull(prob_1_df, col_1)
 
-as.factor(prob_1_df$col_2) * prob_1_df$col_1
+as.factor(pull(prob_1_df, col_2)) * pull(prob_1_df, col_1)
 
-as.numeric(as.factor(prob_1_df$col_2)) * prob_1_df$col_1
+as.numeric(as.factor(pull(prob_1_df,col_2))) * pull(prob_1_df, col_1)
 ```
 
 # Problem 2
+
 
 ## Part 1
 
@@ -62,21 +62,22 @@ Import penguins data:
 ```{r problem 2 part 1}
 data("penguins", package = "palmerpenguins")
 ```
-The penguins data contains `r ncol(penguins)` different variables including `r colnames(penguins[1])`(`r class(penguins[[1]])`), `r colnames(penguins[2])`(`r class(penguins[[2]])`), `r colnames(penguins[3])`(`r class(penguins[[3]])`), `r colnames(penguins[4])`(`r class(penguins[[4]])`), `r colnames(penguins[5])`(`r class(penguins[[5]])`),  `r colnames(penguins[6])`(`r class(penguins[[6]])`),  `r colnames(penguins[7])`(`r class(penguins[[7]])`),  `r colnames(penguins[8])`(`r class(penguins[[8]])`).  
 
-There are 3 different species of penguins including, `r levels(penguins$species)`.  There are 3 different island locations of the penguins; `r levels(penguins$island)`.  There are 2 different sexes of the penguins; `r levels(penguins$sex)`.
+The penguins data contains `r ncol(penguins)` different variables including `r colnames(penguins[1])`(`r class(penguins[[1]])`), `r colnames(penguins[2])`(`r class(penguins[[2]])`), `r colnames(penguins[3])`(`r class(penguins[[3]])`), `r colnames(penguins[4])`(`r class(penguins[[4]])`), `r colnames(penguins[5])`(`r class(penguins[[5]])`),  `r colnames(penguins[6])`(`r class(penguins[[6]])`),  `r colnames(penguins[7])`(`r class(penguins[[7]])`), and  `r colnames(penguins[8])`(`r class(penguins[[8]])`).  
 
-The bill lengths of the penguins range from `r min(penguins$bill_length_mm, na.rm = TRUE)`mm to `r max(penguins$bill_length_mm, na.rm = TRUE)`mm.  The bill depths of the penguins range from `r min(penguins$bill_depth_mm, na.rm = TRUE)`mm to `r max(penguins$bill_depth_mm, na.rm = TRUE)`mm.  The flipper lengths of the penguins range from `r min(penguins$flipper_length_mm, na.rm = TRUE)`mm to `r max(penguins$flipper_length_mm, na.rm = TRUE)`mm.  The body mass of the penguins range from `r min(penguins$body_mass_g, na.rm = TRUE)`g to `r max(penguins$body_mass_g, na.rm = TRUE)`g.  The years range from `r min(penguins$year, na.rm = TRUE)` to `r max(penguins$year, na.rm = TRUE)`.
+There are 3 different species of penguins including, `r levels(pull(penguins, species))`.  There are 3 different island locations of the penguins; `r levels(pull(penguins, island))`.  There are 2 different sexes of the penguins; `r levels(pull(penguins, sex))`.
+
+The bill lengths of the penguins range from `r min(pull(penguins, bill_length_mm), na.rm = TRUE)`mm to `r max(pull(penguins, bill_length_mm), na.rm = TRUE)`mm.  The bill depths of the penguins range from `r min(pull(penguins, bill_depth_mm), na.rm = TRUE)`mm to `r max(pull(penguins, bill_depth_mm), na.rm = TRUE)`mm.  The flipper lengths of the penguins range from `r min(pull(penguins, flipper_length_mm), na.rm = TRUE)`mm to `r max(pull(penguins, flipper_length_mm), na.rm = TRUE)`mm.  The body mass of the penguins range from `r min(pull(penguins, body_mass_g), na.rm = TRUE)`g to `r max(pull(penguins, body_mass_g), na.rm = TRUE)`g.  The years range from `r min(pull(penguins, year), na.rm = TRUE)` to `r max(pull(penguins, year), na.rm = TRUE)`.
 
 The data frame has `r nrow(penguins)` rows and `r ncol(penguins)` columns.
 
-The mean of the flipper length of the penguins after removing all NA values is `r mean(penguins$flipper_length_mm, na.rm = TRUE)`.
+The mean of the flipper length of the penguins after removing all NA values is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)`.
 
 ## Part 2
 
 Scatterplot of flipper_length_mm vs bill_length_mm:
 ```{r problem 2 part 2}
-penguins_scatterplot <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+penguins_scatterplot <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point() + ggtitle("Scatterplot of Bill Length(mm) versus Flipper Length(mm) of Penguins \n Colored By Species") + xlab("Bill Length(mm)") + ylab("Flipper Length(mm)")
 penguins_scatterplot
 
 ggsave("penguins_scatterplot.pdf", height = 4, width = 6)
